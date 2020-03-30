@@ -1,80 +1,104 @@
 // Iteration 1: Names and Input
 
-console.log("I'm ready!");
-
-let hacker1 = "Han";
-
+let hacker1 = "Bob"
 console.log(`The driver's name is ${hacker1}`);
 
-let hacker2 = "Chewie";
-
-console.log(`The navigator's name is ${hacker2}`)
+let hacker2 = "Bob"
+console.log(`The navigator's name is ${hacker2}`);
 
 // Iteration 2: Conditionals
 
 if (hacker1.length > hacker2.length) {
-    console.log(`The driver has the longest name, it has ${hacker1.length} characters`)
+  console.log(`The driver has the longest name, it has ${hacker1.length} characters.`)
 } else if (hacker2.length > hacker1.length) {
-     console.log(`It seems that the navigator has the longest name, it has ${hacker2.length} characters`)
+  console.log(`It seems that the navigator has the longest name, it has ${hacker2.length} characters.`)
 } else {
-     console.log(`Wow, you both have equally long names, ${hacker1.length}`)
+  console.log(`Wow, you both have equally long names, XX characters!`)
 }
 
 // Iteration 3: Loops
 
-let letters1 = " ";
-for (let i = 0; i <= hacker1.length - 1; i++) {
-    letters1 = letters1 + hacker1[i] + " "
-} 
-console.log (letters1.toUpperCase())
+// Iteration 3.1
 
-let letters2 = " "
-for (let i = hacker2.length - 1; i >= 0; i--) {
-    letters2 = letters2 + hacker2[i]
+let driverCapitals = ""
+for (let i = 0; i < hacker1.length; i++) {
+  driverCapitals = driverCapitals + hacker1[i].toUpperCase()
+  if (i < hacker1.length - 1) {
+    driverCapitals = driverCapitals + " "
+  }
 }
-console.log (letters2)
+console.log("driverCapitals", driverCapitals)
 
-if (hacker1 < hacker2) {
-    console.log(`${hacker1} goes first`)
-} else if (hacker2 < hacker1) {
-    console.log(`Yo, ${hacker2} goes first definitely`)
+// Iteration 3.2    
+
+let reversedName = ""
+for (let i = hacker1.length - 1; i >= 0; i--) {
+  reversedName = reversedName + hacker1[i]
+}
+console.log("reversedName", reversedName)
+
+// Iteration 3.3 lexicographic
+
+for (let i = 0; i < hacker1.length; i++) {
+  if (hacker1 === hacker2) {
+    console.log("What?! You both have the same name?")
+    break;
+  } else if (hacker1[i] < hacker2[i]) {
+    console.log(`The driver ${hacker1} goes first.`);
+    break;
+  } else if (hacker2[i] < hacker1[i]) {
+    console.log(`Yo, the navigator ${hacker2} goes first definitely.`)
+    break;
+  }
+}
+
+
+// Bonus 1: Iorem Ipsum
+
+let ipsumStr = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet est at justo tempor mollis. Aliquam consequat lacinia interdum. Fusce sodales dui a elit pulvinar ornare. Integer ullamcorper nunc vel finibus venenatis. Sed lectus velit, lacinia non posuere a, porta fringilla turpis. Cras sagittis erat malesuada risus posuere fringilla. Etiam vulputate dolor metus, in pharetra velit dictum non. Vivamus eu augue nec est tempus viverra. Phasellus eu augue volutpat, fermentum risus et, dapibus purus. Quisque vel augue mauris. Maecenas mattis ipsum sit amet metus dictum, quis pharetra enim cursus. Sed ac ullamcorper turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. In consectetur diam ac turpis malesuada rutrum. Sed porta nulla id enim vulputate, eu tristique tortor cursus."
+
+// to count all words
+let wordCount = 1;
+for (let i = 0; i < ipsumStr.length; i++) {
+  if (ipsumStr[i] === " ") {
+    wordCount++
+  }
+}
+console.log("Amount of words: " + wordCount)
+
+// to count only "et" words
+let etCount = 0;
+for (let i = 0; i < ipsumStr.length; i++) {
+  if (ipsumStr[i] === "e" && ipsumStr[i + 1] === "t") {
+    etCount++
+  }
+}
+console.log("Amount of et: " + etCount)
+
+// Bonus 2: Palindrome
+
+let phraseToCheck = "tacocat"
+
+// to remove special characters from phrase
+let cleanPhrase = ""
+for (let i = 0; i < phraseToCheck.length; i++) {
+  if ((phraseToCheck[i] >= 'A' && phraseToCheck[i] <= 'z')) {
+    cleanPhrase = cleanPhrase + phraseToCheck[i]
+  }
+}
+console.log("cleanPhrase", cleanPhrase)
+
+// to create reverse phrase
+let reversedPhrase = ""
+for (let i = cleanPhrase.length - 1; i >= 0; i--) {
+  reversedPhrase = reversedPhrase + cleanPhrase[i]
+}
+console.log("reversedPhrase", reversedPhrase)
+
+// top check both phrases for a palindrome!
+if (cleanPhrase === reversedPhrase) {
+  console.log("The phrase is a palindrome!")
 } else {
-    console.log(`What?! You both have the same name?`)
+  console.log("The phrase is not a palindrome")
 }
 
-// Bonus 1:
-
-let ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis sollicitudin dolor. Maecenas est augue, dapibus id ante vitae, eleifend pellentesque nulla. Nulla varius elit facilisis nisl malesuada lobortis. Vivamus maximus id mi eu pretium. Cras eget convallis neque, non imperdiet nibh. Vivamus euismod volutpat scelerisque. Nam euismod lacus sit amet arcu placerat, non lacinia nisl malesuada.Aliquam at risus et felis fringilla dignissim ac vitae massa. Curabitur scelerisque, risus eu venenatis cursus, sapien nisl iaculis turpis, a suscipit risus neque vitae magna. Proin id sagittis odio. Suspendisse sed nulla vulputate, aliquam nibh a, facilisis nisi. Donec porta ipsum finibus risus faucibus, ut interdum neque commodo. Integer consectetur arcu felis, varius ullamcorper urna eleifend eu. Nulla mollis tincidunt neque, id fermentum urna auctor a. Duis sollicitudin cursus feugiat. Phasellus sagittis, dui a ornare interdum, enim nulla viverra libero, ac mollis mauris odio quis purus.Fusce ut nunc ut odio suscipit vestibulum. Vivamus ac faucibus ex. Nam in tellus auctor, dapibus risus sit amet, placerat sem. Integer lacinia non eros a pretium. In quis sapien a mauris aliquet luctus a eu erat. Sed id pharetra nisi. Aenean pharetra lectus at tortor porta, a vehicula dui luctus. Sed a mauris ex. Curabitur in accumsan velit, ultrices commodo leo. Quisque efficitur diam a tristique congue. Nam sem libero, hendrerit eget lacus et, tempor cursus nulla. Morbi sagittis porta mollis. Sed pulvinar turpis a arcu fermentum, sit amet ullamcorper arcu finibus. Nulla lobortis, metus nec congue hendrerit, mauris nulla placerat mi, vel molestie lacus felis vitae eros. Nam varius dolor et tortor consequat, eu faucibus nulla volutpat. Etiam a tempus justo."
-
-let numberOfWords = 0;
-for (let i = 0; i < ipsum.length; i++) {
-  if (ipsum[i] === " ") {
-      numberOfWords += 1
-      }
-} 
-console.log(numberOfWords + 1)
-
-var count = (ipsum.match(/ et /g) || []).length;
-console.log(count);
-
-// Bonus 2:
-
-let phraseToCheck = "No 'x' in Nixon";
-phraseToCheck = phraseToCheck.replace(/\s/g, '');
-phraseToCheck = phraseToCheck.replace(/[^a-zA-Z ]/g, "");
-
-let phraseFirstHalf = "";
-for (let i = 0; i < phraseToCheck.length / 2; i++) {
-  phraseFirstHalf += phraseToCheck[i]
-}
-
-let phraseSecondHalf = "";
-for (let i = phraseToCheck.length - 1; i >= phraseToCheck.length / 2; i--) {
-  phraseSecondHalf += phraseToCheck[i]
-}
-
-if (phraseFirstHalf.toLowerCase() == phraseSecondHalf.toLowerCase()) {
-  console.log('Yes! it is a palindrome!')
-} else {
-  console.log('Nope, not a palindrome')
-}
